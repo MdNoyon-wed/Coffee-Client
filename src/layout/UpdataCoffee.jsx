@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const UpdataCoffee = () => {
   const coffee = useLoaderData()
 
-  const {name,quantity,supplier,taste,category,details,photo} =coffee;
+  const {_id,name,quantity,supplier,taste,category,details,photo} =coffee;
 
  
   const handleUpdateCoffee = e => {
@@ -16,15 +16,15 @@ const UpdataCoffee = () => {
     console.log(updateCoffee)
 
     // send updated coffee to the db
-    // fetch(`http://localhost:4000/coffees/${_id}`,{
+    fetch(`http://localhost:4000/coffees/${_id}`,{
 
-    //   method:"PUT",
-    //   headers: {
-    //     'content-type':'application/json'
-    //   },
-    //   body:JSON.stringify(updateCoffee)
+      method:"PUT",
+      headers: {
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(updateCoffee)
       
-    // })
+    })
   
     .then(res=>res.json())
     .then(data=> {
